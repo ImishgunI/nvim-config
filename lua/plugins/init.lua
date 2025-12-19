@@ -24,7 +24,8 @@ require("lazy").setup({
   
   -- Иконки
   { "nvim-tree/nvim-web-devicons" },
-  
+
+
   -- Файловый менеджер
   {
     "nvim-tree/nvim-tree.lua",
@@ -99,6 +100,55 @@ require("lazy").setup({
       setup("lua_ls", {
         settings = {
           Lua = { diagnostics = { globals = { "vim" } } }
+        }
+      })
+
+      setup("rust_analyzer", {
+        settings = {
+          semanticHighlighting = {
+            punctuation = {
+              enable = true,
+            },
+            operator = {
+              enable = true,
+            },
+          },
+          checkOnSave = {
+            command = "clippy",
+            allFeatures = true,
+          },
+          completion = {
+            postfix = {
+              enable = false,
+            },
+            autoimport = {
+              enable = true,
+            },
+          },
+          imports = {
+            granularity = {
+              group = "module",
+            },
+            prefix = "self",
+          },
+          assist = {
+            importGranularity = "module",
+            importPrefix = "by_self",
+          },
+          hover = {
+            actions = {
+              references = {
+                enable = true,
+              },
+            },
+          },
+          cargo = {
+            loadOutDirsFromCheck = true,
+            allFeatures = true,
+          },
+          procMacro = {
+            enable = true,
+          },
         }
       })
 
